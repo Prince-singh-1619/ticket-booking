@@ -7,7 +7,7 @@ dotenv.config();
 
 const sequelize = new Sequelize({
   dialect: 'postgres',
-  host: process.env.DB_HOST || 'localhost',
+  host: process.env.DB_HOST,
   port: parseInt(process.env.DB_PORT || '5432'),
   database: process.env.DB_NAME || 'ticket_booking',
   username: process.env.DB_USER || 'ticket_user',
@@ -19,10 +19,16 @@ const sequelize = new Sequelize({
     acquire: 30000,
     idle: 10000
   },
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false
+    }
+  },
   define: {
     timestamps: true,
     underscored: true,
-    freezeTableName: true
+    freezeTableName: true,
   }
 });
 
