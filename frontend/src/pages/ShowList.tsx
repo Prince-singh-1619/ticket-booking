@@ -73,7 +73,7 @@ const ShowList: React.FC = () => {
           <p>Book your tickets for upcoming shows and events</p>
         </div>
         <button onClick={fetchShows} className="refresh-button" disabled={loading}>
-          {loading ? 'Loading...' : '🔄 Refresh'}
+          {loading ? 'Loading...' : 'Refresh'}
         </button>
       </div>
 

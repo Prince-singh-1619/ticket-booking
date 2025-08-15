@@ -11,7 +11,7 @@ export class BookingExpiryService {
    */
   static startExpiryJob(): void {
     if (this.cronJob) {
-      console.log('ℹ️  Booking expiry job is already running');
+      console.log('Booking expiry job is already running');
       return;
     }
 
@@ -21,7 +21,7 @@ export class BookingExpiryService {
     });
 
     this.cronJob.start();
-    console.log('✅ Booking expiry job started (runs every minute)');
+    console.log('Booking expiry job started (runs every minute)');
   }
 
   /**
@@ -31,7 +31,7 @@ export class BookingExpiryService {
     if (this.cronJob) {
       this.cronJob.stop();
       this.cronJob = null;
-      console.log('🛑 Booking expiry job stopped');
+      console.log('Booking expiry job stopped');
     }
   }
 
@@ -76,11 +76,11 @@ export class BookingExpiryService {
 
       await transaction.commit();
 
-      console.log(`⏰ Expired ${pendingBookings.length} pending booking(s) older than 2 minutes`);
+      console.log(`Expired ${pendingBookings.length} pending booking(s) older than 2 minutes`);
 
     } catch (error) {
       await transaction.rollback();
-      console.error('❌ Error expiring pending bookings:', error);
+      console.error('Error expiring pending bookings:', error);
     }
   }
 
@@ -111,7 +111,7 @@ export class BookingExpiryService {
 
     } catch (error) {
       await transaction.rollback();
-      console.error('❌ Error manually expiring bookings:', error);
+      console.error('Error manually expiring bookings:', error);
       throw error;
     }
   }

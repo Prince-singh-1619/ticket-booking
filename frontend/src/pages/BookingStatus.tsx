@@ -87,13 +87,13 @@ const BookingStatusPage: React.FC = () => {
   const getStatusBadge = (status: BookingStatus) => {
     switch (status) {
       case BookingStatus.CONFIRMED:
-        return <span className="status-badge confirmed">✅ Confirmed</span>;
+        return <span className="status-badge confirmed">Confirmed</span>;
       case BookingStatus.PENDING:
-        return <span className="status-badge pending">⏳ Pending</span>;
+        return <span className="status-badge pending">Pending</span>;
       case BookingStatus.FAILED:
-        return <span className="status-badge failed">❌ Failed</span>;
+        return <span className="status-badge failed">Failed</span>;
       default:
-        return <span className="status-badge unknown">❓ Unknown</span>;
+        return <span className="status-badge unknown">Unknown</span>;
     }
   };
 

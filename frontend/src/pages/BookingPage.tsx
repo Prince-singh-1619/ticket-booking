@@ -152,7 +152,7 @@ const BookingPage: React.FC = () => {
             {bookingResult.details.map((detail: any, index: number) => (
               <div key={index} className={`seat-detail ${detail.success ? 'success' : 'failed'}`}>
                 <span>Seat {detail.seat_number}</span>
-                <span>{detail.success ? '✅ Confirmed' : `❌ ${detail.error}`}</span>
+                <span>{detail.success ? 'Confirmed' : `${detail.error}`}</span>
               </div>
             ))}
           </div>
@@ -258,9 +258,9 @@ const BookingPage: React.FC = () => {
             {currentBookingStatus !== 'idle' && (
               <div className={`booking-status ${currentBookingStatus.toLowerCase()}`}>
                 <span className="status-text">
-                  {currentBookingStatus === 'PENDING' && '⏳ Processing...'}
-                  {currentBookingStatus === 'CONFIRMED' && '✅ Booking Confirmed!'}
-                  {currentBookingStatus === 'FAILED' && '❌ Booking Failed'}
+                  {currentBookingStatus === 'PENDING' && 'Processing...'}
+                  {currentBookingStatus === 'CONFIRMED' && 'Booking Confirmed!'}
+                  {currentBookingStatus === 'FAILED' && 'Booking Failed'}
                 </span>
               </div>
             )}

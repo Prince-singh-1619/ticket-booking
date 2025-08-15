@@ -36,11 +36,11 @@ export const seedDatabase = async (): Promise<void> => {
       ];
 
       await Show.bulkCreate(sampleShows);
-      console.log('✅ Sample shows seeded successfully.');
+      console.log('Sample shows seeded successfully.');
     } else {
-      console.log('ℹ️  Shows already exist, skipping seeding.');
+      console.log('Shows already exist, skipping seeding.');
     }
   } catch (error) {
-    console.error('❌ Error seeding database:', error);
+    console.error('Error seeding database:', error);
   }
 };
