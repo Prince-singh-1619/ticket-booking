@@ -7,6 +7,10 @@
     "start": "node dist/server.js",
     "dev": "nodemon src/server.ts",
     "build": "tsc",
+    "postinstall": "npm run build",
+    "render-build": "npm install && npm run build",
+    "render-start": "npm start",
+    "deploy": "npm install && npm run build && echo 'Deploy script completed'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -37,5 +41,8 @@
     "nodemon": "^3.1.10",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }

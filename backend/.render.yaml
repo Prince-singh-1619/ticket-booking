@@ -1,0 +1,50 @@
+services:
+  - type: web
+    name: ticket-booking-backend
+    env: node
+    plan: free
+    buildCommand: |
+      echo "=== Build started ==="
+      echo "Current directory: $(pwd)"
+      echo "Directory contents:"
+      ls -la
+      
+      # Install dependencies
+      npm install
+      
+      # Build the project
+      npm run build
+      
+      # Verify build output
+      echo "=== Build completed ==="
+      echo "Dist folder contents:"
+      ls -la dist/ || echo "dist folder not found"
+      
+      if [ -f "dist/server.js" ]; then
+        echo "✅ dist/server.js found successfully!"
+        echo "File size: $(du -h dist/server.js)"
+      else
+        echo "❌ ERROR: dist/server.js not found!"
+        exit 1
+      fi
+    startCommand: |
+      echo "=== Starting server ==="
+      echo "Current directory: $(pwd)"
+      echo "Directory contents:"
+      ls -la
+      echo "Dist folder contents:"
+      ls -la dist/
+      
+      if [ ! -f "dist/server.js" ]; then
+        echo "❌ ERROR: dist/server.js not found! Cannot start server."
+        exit 1
+      fi
+      
+      echo "✅ Starting server with dist/server.js"
+      node dist/server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+    healthCheckPath: /health
